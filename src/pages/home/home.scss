@@ -1,3 +1,33 @@
 page-home {
+    #logo-ctn {
+        text-align: center;
+        img {
+            width: 80%;
+        }
+    }
+    #btn-ctn {
+        text-align: center;
+        margin-top: 20px;
+        button {
+            width: 80%!important;
+            margin: 15px auto;
+            border-radius: 6px;
+            font-weight: bold;
+            background: #ec662d;
+        }
+    }
 
+    .arch {
+        padding: 50px 30px;
+        background: url("../../assets/imgs/border.png") no-repeat;
+        background-size: contain;
+        text-align: center;
+
+
+        p {
+            font-size: 26px;
+            color: #8b6db3;
+        }
+    }
+    
 }

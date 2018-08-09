@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
+import { WelcomePage } from '../welcome/welcome';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,14 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public platform: Platform, public navCtrl: NavController) {
+    platform.ready().then((readySource) => { 
+      document.getElementById("grid").style.height = platform.height() + "px";
+    });
+  }
 
+  register() {
+    this.navCtrl.push(WelcomePage);
   }
 
 }

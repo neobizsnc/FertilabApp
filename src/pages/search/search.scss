@@ -1,0 +1,37 @@
+page-search { 
+
+    .searchbar {
+        padding: 20px 55px;
+        background: #fff;
+        .searchbar-search-icon {
+            color: #ED6A33;
+            top: 19px;
+        }
+        .searchbar-input {
+          padding: 15px 40px;
+          height: auto;
+          border: 1px solid #9874a7;
+          font-size: 14px;
+        }
+      }
+      
+    .logo-ctn {
+        text-align: center;
+        img {
+            width: 80%;
+        }
+    }
+    .arch {
+        padding: 50px 30px;
+        background: url("../../assets/imgs/border.png") no-repeat;
+        background-size: contain;
+        text-align: center;
+
+
+        p {
+            font-size: 26px;
+            color: #8b6db3;
+        }
+    }
+
+}

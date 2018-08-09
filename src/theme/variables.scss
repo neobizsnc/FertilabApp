@@ -41,6 +41,25 @@ $colors: (
   dark:       #222
 );
 
+ion-input {
+  border: 1px solid #9874a7;
+  width: 80%!important;
+  border-radius: 6px;
+  box-shadow: none;
+  color: #9b9b9b;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+ion-row{ height: 100%; }
+
+.no-border {
+  border: none!important; 
+}
+
+.footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+  height: 0!important;
+}
 
 // App iOS Variables
 // --------------------------------------------------
