@@ -34,25 +34,16 @@ export class SearchPage {
   }
 
   updateSearchResults(){
-
-    console.log("qui")
-    //AIzaSyDZ15vkJWNNl3tpZWRAPvoA3tBkpTqUt0k
     this.http.get('http://vascernapi.azurewebsites.net/Home/GetEventVenuesList?SearchText=' + this.autocomplete.input + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
       this.autocompleteItems = [];
-      this.autocompleteItems.push(data[0]); 
+      this.autocompleteItems.push(data); 
     });
   }
 
-  //AIzaSyDZ15vkJWNNl3tpZWRAPvoA3tBkpTqUt0k
   selectSearchResult(item){
     this.autocompleteItems = [];   
-    this.http.get('http://vascernapi.azurewebsites.net/Home/GetGeocode?Address=' + item.description + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
-      if(data.status === 'OK' && data.results[0]){
-          this.autocomplete.input = '';
-          this.navCtrl.push(SearchresultPage, {
-            city: data.results[0]
-          });
-      }
+    this.navCtrl.push(SearchresultPage, {
+      city: item
     });
   } 
  

@@ -1,0 +1,61 @@
+<ion-content padding [ngClass]="{'ios': operatingSystem == 'ios', 'android': operatingSystem == 'android'}">
+    <ion-icon name="ios-arrow-back" class="back" (click)="close()"></ion-icon>
+    <ion-grid id="gridScheda" fixed>
+      <ion-row>
+          <ion-col>
+            <h1 class="title"><strong>{{ structure.structure}}</strong></h1>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-1>
+            <ion-icon name="md-pin"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <div class="address">{{ structure.address }} <br/> {{ structure.city }} {{ structure.province }} </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-1>
+          <ion-icon name="md-call"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <div class="phone" (click)="call(structure.phone)">{{ structure.phone }}</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-1>
+            <ion-icon name="md-mail"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <div class="mail" (click)="email(structure.mail)">{{ structure.mail }}</div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="border">
+        <ion-col>
+          <div class="time timeopen"><strong>open time</strong></div>
+          <div class="time">{{ structure.openTime  }}</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <div class="time timeopen"><strong>open time referti</strong></div>
+          <div class="time">{{ structure.openRef }}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-fab bottom left class="share-fab">
+      <button ion-fab><ion-icon name="md-share"></ion-icon></button>
+      <ion-fab-list side="right">
+        <button ion-fab (click)="email(structure.mail)"><ion-icon name="md-mail"></ion-icon></button>
+      </ion-fab-list>
+      <ion-fab-list side="top">
+          <button ion-fab (click)="sms(structure.phone)"><ion-icon name="ios-chatbubbles"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+    <ion-fab bottom class="call-fab">
+      <button ion-fab (click)="call(structure.phone)"><ion-icon name="md-call"></ion-icon></button>
+    </ion-fab>
+    <ion-fab bottom class="direction-fab">
+      <button ion-fab (click)="call(structure.phone)"><ion-icon name="md-walk"></ion-icon></button>
+    </ion-fab>
+</ion-content>

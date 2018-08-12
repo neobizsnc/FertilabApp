@@ -41,6 +41,25 @@ $colors: (
   dark:       #222
 );
 
+@font-face {
+  font-family: 'Century-Ghotic';
+  src: url('../assets/fonts/GOTHIC.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Century-Ghotic-Bold';
+  src: url('../assets/fonts/GOTHICB.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-family-base: 'Century-Ghotic';
+$font-family-ios-base: 'Century-Ghotic';
+$font-family-md-base: 'Century-Ghotic';
+$font-family-wp-base: 'Century-Ghotic';
+
 ion-input {
   border: 1px solid #9874a7;
   width: 80%!important;
@@ -59,6 +78,13 @@ ion-row{ height: 100%; }
 
 .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
   height: 0!important;
+}
+
+ion-grid {
+  padding: 0!important;
+}
+ion-col {
+  padding: 0!important;
 }
 
 // App iOS Variables

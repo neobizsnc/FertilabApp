@@ -7,10 +7,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { SchedaPage } from '../pages/scheda/scheda';
 import { SearchPage } from '../pages/search/search';
 import { SearchresultPage } from '../pages/searchresult/searchresult';
 import { Keyboard } from '@ionic-native/keyboard';
 import { HttpModule } from '@angular/http';
+import { TruncatePipe } from '../pipes/truncate/truncate';
+import { Geolocation } from '@ionic-native/geolocation';
+import { SMS } from '@ionic-native/sms';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,9 @@ import { HttpModule } from '@angular/http';
     HomePage,
     SearchPage,
     SearchresultPage,
-    WelcomePage
+    WelcomePage,
+    SchedaPage,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
@@ -32,13 +40,18 @@ import { HttpModule } from '@angular/http';
     HomePage,
     SearchPage,
     SearchresultPage,
-    WelcomePage
+    WelcomePage,
+    SchedaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Keyboard,
     HttpModule,
+    Geolocation,
+    SMS,
+    EmailComposer,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
