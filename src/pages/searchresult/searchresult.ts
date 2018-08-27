@@ -67,6 +67,7 @@ export class SearchresultPage {
     this.geocodePlaceId(this.city);
   }
   
+  //e la stessa di fertilab, ritorna la lista google delle citta
   updateSearchResults(){
     this.http.get('http://vascernapi.azurewebsites.net/Home/GetEventVenuesList?SearchText=' + this.autocomplete.input + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
       this.autocompleteItems = [];

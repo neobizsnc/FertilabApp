@@ -8,7 +8,7 @@
     </ion-row>
     <ion-row align-items-start>
       <ion-col>
-          <ion-input placeholder="Inserisci codice"></ion-input>
+          <ion-input [(ngModel)]="code" placeholder="Inserisci codice"></ion-input>
           <div id="btn-ctn">
               <button ion-button (click)="register()">Registrati</button>
           </div>
