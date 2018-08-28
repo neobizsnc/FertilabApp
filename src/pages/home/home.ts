@@ -23,7 +23,7 @@ export class HomePage {
         this.navCtrl.push(WelcomePage);
       }
     });*/
-    if(this.code == "12345") {
+    if(this.code == "AMH") {
       this.navCtrl.push(WelcomePage);
     }
   }
