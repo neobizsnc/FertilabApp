@@ -23,9 +23,10 @@ export class HomePage {
         this.navCtrl.push(WelcomePage);
       }
     });*/
-    if(this.code == "AMH") {
+    /*if(this.code == "AMH") {
       this.navCtrl.push(WelcomePage);
-    }
+    }*/
+    this.navCtrl.push(WelcomePage);
   }
 
 }
