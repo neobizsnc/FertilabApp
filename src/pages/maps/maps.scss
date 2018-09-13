@@ -1,0 +1,104 @@
+page-maps {
+
+    .ios {
+        ion-searchbar {
+            background: transparent!important;
+            top: 150px;        
+        }
+    }
+
+    .android {
+        ion-searchbar {
+            background: transparent!important;
+            top: 120px;        
+        }
+    }
+    
+
+    .searchbar-input {
+        border: 1px solid #703eb4;
+        background-color: #AA97C3!important;
+        color: #fff!important;
+    }
+
+    .searchbar-search-icon {
+        display: none;
+    }
+
+    .ios {
+        
+        .searchbar-input {
+            padding: 25px 35px!important;
+        }
+    }
+
+    .searchbar-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #f0f0f0!important;
+    }
+
+    .header-pers {
+        padding: 0 20px;
+        position: static;
+        width: 100%;
+        height: 280px;
+        margin-top: -100px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ec662d+0,9076b3+50,703eb4+100 */
+        background: #ec662d; /* Old browsers */
+        background: -moz-linear-gradient(45deg, #ec662d 0%, #9076b3 50%, #703eb4 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, #ec662d 0%,#9076b3 50%,#703eb4 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, #ec662d 0%,#9076b3 50%,#703eb4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ec662d', endColorstr='#703eb4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        border-radius: 180px / 80px;
+        z-index: 1;
+
+        .nearby-text {
+            font-size: 16px;
+            color: #fff;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .nearby {
+            width: 50px;
+            height: 50px;
+            background: url("../../assets/imgs/nearby.png") no-repeat;
+            background-size: contain;
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+    }
+
+    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+        background-image: none!important;
+    }
+
+    #map_canvas {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .close {
+        top: 20px!important;
+    }
+    #layer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: #f00;
+    }
+
+    .gmnoprint {
+        display: none;
+    }
+
+    .scroll-content {
+        margin: 0!important;
+    }
+}
