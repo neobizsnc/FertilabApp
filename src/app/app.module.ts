@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MapsPage } from '../pages/maps/maps';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { SchedaPage } from '../pages/scheda/scheda';
 import { SearchPage } from '../pages/search/search';
@@ -26,6 +27,7 @@ import { CallNumber } from '@ionic-native/call-number';
     SearchresultPage,
     WelcomePage,
     SchedaPage,
+    MapsPage,
     TruncatePipe
   ],
   imports: [
@@ -41,6 +43,7 @@ import { CallNumber } from '@ionic-native/call-number';
     SearchPage,
     SearchresultPage,
     WelcomePage,
+    MapsPage,
     SchedaPage
   ],
   providers: [

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SchedaPage } from '../scheda/scheda';
+import { MapsPage } from '../maps/maps';
 
 /**
  * Generated class for the SearchresultPage page.
@@ -138,6 +139,11 @@ export class SearchresultPage {
   goToScheda(structure) {
     let profileModal = this.modalCtrl.create(SchedaPage, { structure: structure });
     profileModal.present();
+  }
+
+  goToMaps() {
+    let mapsModal = this.modalCtrl.create(MapsPage, { centers: this.centers, city: this.city });
+    mapsModal.present();
   }
 
 }
