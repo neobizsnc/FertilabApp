@@ -193,6 +193,7 @@ export class MapsPage {
         this.newMap.setCenter(marker.getPosition());
         
         this.zone.run(() => {
+          this.load = false;
           this.selectedCenter = val;
           this.load = true;
         });
@@ -207,7 +208,6 @@ export class MapsPage {
   close() {
     this.viewCtrl.dismiss();
   }
-
 
 
 }

@@ -1,5 +1,9 @@
 page-maps {
 
+    .scroll-content {
+        overflow:hidden !important;
+    }
+
     .ios {
         ion-searchbar {
             background: transparent!important;
@@ -40,7 +44,7 @@ page-maps {
         padding: 0 20px;
         position: static;
         width: 100%;
-        height: 280px;
+        height: 250px;
         margin-top: -100px;
         /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ec662d+0,9076b3+50,703eb4+100 */
         background: #ec662d; /* Old browsers */
@@ -51,25 +55,27 @@ page-maps {
         border-radius: 180px / 80px;
         z-index: 1;
 
-        .nearby-text {
-            font-size: 16px;
-            color: #fff;
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translate(-50%);
-        }
+        
+    }
 
-        .nearby {
-            width: 50px;
-            height: 50px;
-            background: url("../../assets/imgs/nearby.png") no-repeat;
-            background-size: contain;
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translate(-50%);
-        }
+    .nearby-text {
+        font-size: 16px;
+        color: #fff;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .nearby {
+        width: 64px;
+        height: 64px;
+        background: url("../../assets/imgs/nearby.png") no-repeat;
+        background-size: contain;
+        position: absolute;
+        bottom: 200px;
+        right: 36px;
+        z-index: 100;
     }
 
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
@@ -83,16 +89,47 @@ page-maps {
         flex-direction: row;
     }
     .close {
-        top: 20px!important;
+        bottom: 140px!important;
+        right: 40px!important;
+        .fab {
+            
+            background: #F18458!important;
+
+            ion-icon {
+                font-size: 35px!important;
+            }
+        }
     }
+
     #layer {
         position: absolute;
-        bottom: 0;
+        bottom: -180px;
         left: 0;
         width: 100%;
-        padding: 20px;
-        background: #f00;
+        padding: 20px 40px;
+        background: #fff;
+        transition: all 0.5s;
+        h1 {
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #8B6DB3;
+            text-transform: lowercase;
+        }
+        div {
+            font-size: 15px;
+            color: #8B6DB3;
+            text-transform: lowercase;
+        }
     }
+
+    #layer.active {
+       bottom: 20px;
+    }
+
+    #layer.deactive {
+        bottom: -180px;
+     }
 
     .gmnoprint {
         display: none;
@@ -101,4 +138,5 @@ page-maps {
     .scroll-content {
         margin: 0!important;
     }
+
 }
