@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { WelcomePage } from '../welcome/welcome';
 import { Http } from '@angular/http';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @Component({
   selector: 'page-home',
@@ -11,11 +12,23 @@ export class HomePage {
 
   code: string = "";
 
-  constructor(public platform: Platform, public navCtrl: NavController, public http: Http) {
+  constructor(private keyboard: Keyboard, public platform: Platform, public navCtrl: NavController, public http: Http) {
     platform.ready().then((readySource) => { 
-      document.getElementById("grid").style.height = platform.height() + "px";
+      this.keyboard.onKeyboardHide().subscribe(data => {
+        //document.getElementById("grid").style.height = this.platform.height() + 30 + "px";
+     });
     });
   }
+
+  ionViewDidEnter() {
+    this.platform.ready().then((readySource) => { 
+      document.getElementById("grid").style.height = this.platform.height() + "px";
+    });
+  }
+
+
+
+  
 
   register() {
     /*this.http.get('http://fertilab.azurewebsites.net/api/UsersApi/GetByCode/' + this.code).map(res => res.json()).subscribe(data => {

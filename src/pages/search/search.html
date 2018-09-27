@@ -13,7 +13,7 @@
     </ion-row>
     <ion-row align-items-start>
       <ion-col>
-          <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Address, city or zip Code"></ion-searchbar>
+          <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="indirizzo, città, cap"></ion-searchbar>
           <ion-list [hidden]="autocompleteItems.length == 0">
             <ion-item *ngFor="let item of autocompleteItems[0]" tappable (click)="selectSearchResult(item)">
               {{ item.description }}

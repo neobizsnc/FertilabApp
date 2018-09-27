@@ -1,25 +1,24 @@
-
 <ion-content>
-  <ion-grid id="grid" fixed>
-    <ion-row align-items-center id="logo-ctn"> 
-      <ion-col > 
-          <img src="assets/imgs/logo.png" />
-      </ion-col>
-    </ion-row>
-    <ion-row align-items-start>
-      <ion-col>
-          <ion-input [(ngModel)]="code" placeholder="Inserisci codice"></ion-input>
-          <div id="btn-ctn">
-              <button ion-button (click)="register()">Registrati</button>
-          </div>
-      </ion-col>
-    </ion-row>
-    <ion-row align-items-end>
-        <ion-col>
-            <div class="arch">
-              <p>Inserisci il codice di attivazione cha hai ricevuto</p>
-            </div> 
+    <ion-grid id="grid" fixed>
+      <ion-row align-items-center id="logo-ctn"> 
+        <ion-col > 
+            <img src="assets/imgs/logo.png" />
         </ion-col>
       </ion-row>
-  </ion-grid>
-</ion-content>
+      <ion-row align-items-start>
+        <ion-col>
+            <ion-input [(ngModel)]="code" placeholder="Inserisci codice"></ion-input>
+            <div id="btn-ctn">
+                <button ion-button (click)="register()">Registrati</button>
+            </div>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-end>
+          <ion-col>
+              <div class="arch">
+                <p>Inserisci il codice di attivazione cha hai ricevuto</p>
+              </div> 
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+  </ion-content>

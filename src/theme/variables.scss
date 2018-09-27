@@ -42,23 +42,27 @@ $colors: (
 );
 
 @font-face {
-  font-family: 'Century-Ghotic';
-  src: url('../assets/fonts/GOTHIC.ttf') format('truetype');
+  font-family: 'Releway-Regular';
+  src: url('../assets/fonts/Raleway-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Century-Ghotic-Bold';
-  src: url('../assets/fonts/GOTHICB.ttf') format('truetype');
+  font-family: 'Releway-Regular-Bold';
+  src: url('../assets/fonts/Raleway-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-$font-family-base: 'Century-Ghotic';
-$font-family-ios-base: 'Century-Ghotic';
-$font-family-md-base: 'Century-Ghotic';
-$font-family-wp-base: 'Century-Ghotic';
+$font-family-base: 'Releway-Regular';
+$font-family-ios-base: 'Releway-Regular';
+$font-family-md-base: 'Releway-Regular';
+$font-family-wp-base: 'Releway-Regular';
+
+strong {
+  font-family: 'Releway-Regular-Bold'!important;
+}
 
 ion-input {
   border: 1px solid #9874a7;
@@ -85,6 +89,14 @@ ion-grid {
 }
 ion-col {
   padding: 0!important;
+}
+
+button {
+  text-transform: initial!important;
+}
+
+.scroll-content {
+  padding-bottom: 0 !important;
 }
 
 // App iOS Variables

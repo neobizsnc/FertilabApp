@@ -18,7 +18,7 @@
         <ion-col col-1>
           <ion-icon name="md-call"></ion-icon>
         </ion-col>
-        <ion-col col-11>
+        <ion-col col-11 *ngIf="structure.phone != ''">
           <div class="phone" (click)="call(structure.phone)">{{ structure.phone }}</div>
         </ion-col>
       </ion-row>
@@ -32,7 +32,7 @@
       </ion-row>
       <ion-row class="border">
         <ion-col>
-          <div class="time timeopen"><strong>open time</strong></div>
+          <div class="time timeopen"><strong>orario di apertura</strong></div>
           <div class="time">{{ structure.openTime  }}</div>
         </ion-col>
       </ion-row>
@@ -45,17 +45,20 @@
     </ion-grid>
     <ion-fab bottom left class="share-fab">
       <button ion-fab><ion-icon name="md-share"></ion-icon></button>
+      <ion-fab-list side="left">
+        <button ion-fab (click)="shareEmail(structure.mail)"><ion-icon name="md-mail"></ion-icon></button>
+      </ion-fab-list>
       <ion-fab-list side="right">
-        <button ion-fab (click)="email(structure.mail)"><ion-icon name="md-mail"></ion-icon></button>
+        <button ion-fab (click)="shareSms(structure.phone)"><ion-icon name="ios-chatbubbles"></ion-icon></button>
       </ion-fab-list>
       <ion-fab-list side="top">
-          <button ion-fab (click)="sms(structure.phone)"><ion-icon name="ios-chatbubbles"></ion-icon></button>
-        </ion-fab-list>
+        <button ion-fab (click)="shareWh(structure.phone)"><ion-icon name="logo-whatsapp"></ion-icon></button>
+      </ion-fab-list>
     </ion-fab>
     <ion-fab bottom class="call-fab">
       <button ion-fab (click)="call(structure.phone)"><ion-icon name="md-call"></ion-icon></button>
     </ion-fab>
     <ion-fab bottom class="direction-fab">
-      <button ion-fab (click)="call(structure.phone)"><ion-icon name="md-walk"></ion-icon></button>
+      <button ion-fab (click)="maps(structure.address, structure.city, structure.province)"><ion-icon name="md-walk"></ion-icon></button>
     </ion-fab>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, NavParams, Platform, LoadingController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, Platform, LoadingController, ModalController, ViewController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout';
@@ -29,7 +29,7 @@ export class SearchresultPage {
   operatingSystem: any;
   loading: any;
 
-  constructor(public modalCtrl: ModalController, public geolocation: Geolocation, public loadingCtrl: LoadingController, public platform: Platform, private zone: NgZone, public http: Http, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public modalCtrl: ModalController, public geolocation: Geolocation, public loadingCtrl: LoadingController, public platform: Platform, private zone: NgZone, public http: Http, public navCtrl: NavController, public navParams: NavParams) {
     this.autocomplete = {
       input: ''
     };
@@ -70,7 +70,7 @@ export class SearchresultPage {
   
   //e la stessa di fertilab, ritorna la lista google delle citta
   updateSearchResults(){
-    this.http.get('http://vascernapi.azurewebsites.net/Home/GetEventVenuesList?SearchText=' + this.autocomplete.input + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
+    this.http.get('http://vascernapi.azurewebsites.net/Home/GetEventVenuesListFertilab?SearchText=' + this.autocomplete.input + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
       this.autocompleteItems = [];
       this.autocompleteItems.push(data); 
     });
@@ -142,8 +142,12 @@ export class SearchresultPage {
   }
 
   goToMaps() {
-    let mapsModal = this.modalCtrl.create(MapsPage, { centers: this.centers, city: this.city });
-    mapsModal.present();
+    //let mapsModal = this.modalCtrl.create(MapsPage, { centers: this.centers, city: this.city });
+    //mapsModal.present();
+    this.navCtrl.push(MapsPage, { centers: this.centers, city: this.city });
   }
 
+  goBack() {
+    this.viewCtrl.dismiss();
+  }
 }

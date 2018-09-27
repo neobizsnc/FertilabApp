@@ -4,7 +4,7 @@ import { SearchresultPage } from '../searchresult/searchresult';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout';
-
+import { Keyboard } from '@ionic-native/keyboard';
 /**
  * Generated class for the SearchPage page.
  *
@@ -21,7 +21,7 @@ export class SearchPage {
   autocomplete: any;
   autocompleteItems: any = [];
 
-  constructor(public http: Http, public platform: Platform, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private keyboard: Keyboard, public http: Http, public platform: Platform, public navCtrl: NavController, public navParams: NavParams) {
     this.autocomplete = {
       input: ''
     };
@@ -34,7 +34,7 @@ export class SearchPage {
   }
 
   updateSearchResults(){
-    this.http.get('http://vascernapi.azurewebsites.net/Home/GetEventVenuesList?SearchText=' + this.autocomplete.input + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
+    this.http.get('http://vascernapi.azurewebsites.net/Home/GetEventVenuesListFertilab?SearchText=' + this.autocomplete.input + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
       this.autocompleteItems = [];
       this.autocompleteItems.push(data); 
     });

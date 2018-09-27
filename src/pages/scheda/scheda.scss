@@ -20,6 +20,7 @@ page-scheda {
         color: #8B6DB3;
         font-family: 'Century-Ghotic-Bold';
         margin-bottom: 40px;
+        text-transform: initial!important;
     }
     .address, .phone, .mail {
         font-size: 16px;
@@ -51,7 +52,7 @@ page-scheda {
         }
     }
     .call-fab {
-        right: 120px;
+        right: 104px;
         ion-icon {
             color: #F18458!important;
         }
@@ -61,13 +62,13 @@ page-scheda {
         }
     }
     .share-fab {
-        left: 40px;
+        left: 80px;
         
         .fab {
-            border: 1px solid #F18458;
+            border: 1px solid #8B6DB3;
             background: #fff;
             ion-icon {
-                color: #F18458;
+                color: #8B6DB3;
             }
         }
         .fab-close-active {

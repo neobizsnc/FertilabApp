@@ -4,21 +4,37 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { Keyboard } from '@ionic-native/keyboard';
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp {
-  rootPage:any = HomePage;
 
-  constructor(public keyboard: Keyboard, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  rootPage:any;
+
+  constructor(private storage: Storage, public keyboard: Keyboard, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      
+      this.storage.get('introShown').then((result) => {
+ 
+        if(result){
+          this.rootPage = HomePage;
+        } else {
+          this.rootPage = TutorialPage;
+          this.storage.set('introShown', true);
+        }
+
+
+      });
+
       statusBar.styleDefault();
       splashScreen.hide();
-      this.keyboard.disableScroll(false);
+
+      this.keyboard.disableScroll(true);
+ 
     });
   }
 }

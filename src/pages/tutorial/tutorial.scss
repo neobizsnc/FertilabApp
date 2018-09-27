@@ -1,0 +1,68 @@
+page-tutorial {
+
+    ion-content {
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ec662d+0,9076b3+50,703eb4+100 */
+      background: #ec662d; /* Old browsers */
+      background: -moz-linear-gradient(45deg, #ec662d 0%, #9076b3 50%, #703eb4 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(45deg, #ec662d 0%,#9076b3 50%,#703eb4 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(45deg, #ec662d 0%,#9076b3 50%,#703eb4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ec662d', endColorstr='#703eb4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+  
+    .swiper-slide {
+      align-items: flex-start!important;
+    }
+  
+    .btnAction {
+      width: 100px;
+    }
+  
+    .skip {
+      background: transparent;
+      color: #FFFFFF!important;
+      border: 2px solid #ffffff;
+    }
+  
+    .slide-zoom, .row {
+      height: 100%;
+    }
+  
+  
+    .btn-ctn {
+      width: 100%;
+    }
+  
+    ion-slide img {
+      height: calc(100% - 300px)!important;
+      width: auto!important;
+    }
+    
+    ion-slide p {
+      font-size: 25px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+  
+    ion-slide button {
+      font-size: 25px;
+      text-transform: uppercase;
+      background: #FFFFFF;
+      padding: 15px 30px!important;
+      color: #8B6DB3!important;
+    }
+  
+    .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+      margin: 20px 5px;
+    }
+  
+    .swiper-pagination-bullet-active {
+      background: #FFFFFF;
+      opacity: 0.8!important;
+    }
+    .swiper-pagination-bullet {
+      background: #FFFFFF;
+      opacity: 0.5;
+    }
+  }
+  

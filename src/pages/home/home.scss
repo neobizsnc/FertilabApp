@@ -1,5 +1,9 @@
 page-home {
+    .scroll-content {
+        padding-bottom: 0 !important;
+     }
     #logo-ctn {
+        margin-top: 50px;
         text-align: center;
         img {
             width: 80%;
@@ -28,6 +32,17 @@ page-home {
             font-size: 20px;
             color: #8b6db3;
         }
+    }
+
+    #bottom {
+        position: absolute;
+        bottom: 0;
+    }
+
+    #center {
+        position: absolute;
+        width: 100%;
+        top: 30%;
     }
     
 }

@@ -34,7 +34,7 @@ export class MapsPage {
   autocompleteItems: any = [];
   city: any;
   operatingSystem: any;
- 
+  markers: any[] = [];
 
   constructor(public http: Http, public modalCtrl: ModalController, public platform: Platform, private zone: NgZone, public viewCtrl: ViewController, public geolocation: Geolocation, public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams) {
     this.autocomplete = {
@@ -59,7 +59,7 @@ export class MapsPage {
   }
 
   updateSearchResults(){
-    this.http.get('http://vascernapi.azurewebsites.net/Home/GetEventVenuesList?SearchText=' + this.autocomplete.input + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
+    this.http.get('http://vascernapi.azurewebsites.net/Home/GetEventVenuesListFertilab?SearchText=' + this.autocomplete.input + '&ApiKey=AIzaSyBZW73ZAn-6PqKKAVuDOzYzMOB_m2dDLIo').map(res => res.json()).subscribe(data => {
       this.autocompleteItems = [];
       this.autocompleteItems.push(data); 
     });
@@ -174,7 +174,7 @@ export class MapsPage {
     let latLng = new google.maps.LatLng(pos.lat, pos.lng);
     let mapOptions = {
       center: latLng,
-      zoom: 6,
+      zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     } 
     this.newMap = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -189,25 +189,44 @@ export class MapsPage {
         title: 'Hello World!'
       });
       marker.addListener('click', () => {
-        this.newMap.setZoom(6);
+        this.newMap.setZoom(14);
         this.newMap.setCenter(marker.getPosition());
         
         this.zone.run(() => {
+          this.resetMarkers();
           this.load = false;
+          marker.icon.url = 'assets/imgs/GEO_Division_ON.png';
+          marker.icon.size.height = 40;
+          marker.icon.size.width = 30;
           this.selectedCenter = val;
           this.load = true;
         });
         
 
       }); 
+      this.markers.push(marker);
     });
     this.geocodePlaceId(this.city);
 
+  }
+
+  resetMarkers () {
+    this.markers.forEach((val, index) => {
+      this.zone.run(() => {
+        val.icon.url = 'assets/imgs/locMaps.png';
+        val.icon.size.height = 36;
+        val.icon.size.width = 25;
+      });
+      
+    })
   }
 
   close() {
     this.viewCtrl.dismiss();
   }
 
+  goBack() {
+    this.viewCtrl.dismiss();
+  }
 
 }

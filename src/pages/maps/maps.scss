@@ -9,12 +9,24 @@ page-maps {
             background: transparent!important;
             top: 150px;        
         }
+        .annulla {
+            position: absolute;
+            bottom: 80px;
+            right: 25px;
+            color: white;
+        }
     }
 
     .android {
         ion-searchbar {
             background: transparent!important;
             top: 120px;        
+        }
+        .annulla {
+            position: absolute;
+            bottom: 100px;
+            right: 25px;
+            color: white;
         }
     }
     
@@ -32,7 +44,7 @@ page-maps {
     .ios {
         
         .searchbar-input {
-            padding: 25px 35px!important;
+            padding: 20px 15px!important;
         }
     }
 
@@ -41,10 +53,13 @@ page-maps {
     }
 
     .header-pers {
+        ion-searchbar {
+            width: 80%;
+        }
         padding: 0 20px;
         position: static;
         width: 100%;
-        height: 250px;
+        height: 260px;
         margin-top: -100px;
         /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ec662d+0,9076b3+50,703eb4+100 */
         background: #ec662d; /* Old browsers */
@@ -62,20 +77,20 @@ page-maps {
         font-size: 16px;
         color: #fff;
         position: absolute;
-        bottom: 30px;
+        bottom: 35px;
         left: 50%;
         transform: translate(-50%);
     }
 
     .nearby {
-        width: 64px;
-        height: 64px;
+        width: 60px;
+        height: 60px;
         background: url("../../assets/imgs/nearby.png") no-repeat;
         background-size: contain;
         position: absolute;
-        bottom: 200px;
-        right: 36px;
-        z-index: 100;
+        bottom: -30px;
+        left: 50%;
+        transform: translate(-50%);
     }
 
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
@@ -89,7 +104,7 @@ page-maps {
         flex-direction: row;
     }
     .close {
-        bottom: 140px!important;
+        bottom: 160px!important;
         right: 40px!important;
         .fab {
             
@@ -109,6 +124,7 @@ page-maps {
         padding: 20px 40px;
         background: #fff;
         transition: all 0.5s;
+        opacity: 0.9;
         h1 {
             margin-top: 0;
             font-size: 18px;
@@ -137,6 +153,11 @@ page-maps {
 
     .scroll-content {
         margin: 0!important;
+    }
+
+    .fab {
+        width: 60px;
+        height: 60px;
     }
 
 }

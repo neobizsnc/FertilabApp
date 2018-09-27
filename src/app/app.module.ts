@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { TutorialPage } from '../pages/tutorial/tutorial';
 import { MapsPage } from '../pages/maps/maps';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { SchedaPage } from '../pages/scheda/scheda';
@@ -18,6 +19,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { SMS } from '@ionic-native/sms';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -28,12 +32,23 @@ import { CallNumber } from '@ionic-native/call-number';
     WelcomePage,
     SchedaPage,
     MapsPage,
-    TruncatePipe
+    TruncatePipe,
+    TutorialPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      platforms : {
+        ios : {
+          // These options are available in ionic-angular@2.0.0-beta.2 and up.
+          scrollAssist: false,    // Valid options appear to be [true, false]
+          autoFocusAssist: false  // Valid options appear to be ['instant', 'delay', false]
+        }
+        // http://ionicframework.com/docs/v2/api/config/Config/)
+      }
+    }),
+    IonicStorageModule.forRoot()
      
   ],
   bootstrap: [IonicApp],
@@ -44,7 +59,8 @@ import { CallNumber } from '@ionic-native/call-number';
     SearchresultPage,
     WelcomePage,
     MapsPage,
-    SchedaPage
+    SchedaPage,
+    TutorialPage
   ],
   providers: [
     StatusBar,
@@ -55,6 +71,8 @@ import { CallNumber } from '@ionic-native/call-number';
     SMS,
     EmailComposer,
     CallNumber,
+    LaunchNavigator,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
