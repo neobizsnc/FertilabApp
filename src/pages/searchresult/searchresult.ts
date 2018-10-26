@@ -6,6 +6,8 @@ import 'rxjs/add/operator/timeout';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SchedaPage } from '../scheda/scheda';
 import { MapsPage } from '../maps/maps';
+import { Keyboard } from '@ionic-native/keyboard';
+import { GoogleMaps, GoogleMap, MyLocation } from '@ionic-native/google-maps';
 
 /**
  * Generated class for the SearchresultPage page.
@@ -28,8 +30,9 @@ export class SearchresultPage {
   city: any;
   operatingSystem: any;
   loading: any;
+  map: GoogleMap;
 
-  constructor(public viewCtrl: ViewController, public modalCtrl: ModalController, public geolocation: Geolocation, public loadingCtrl: LoadingController, public platform: Platform, private zone: NgZone, public http: Http, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private keyboard: Keyboard, public viewCtrl: ViewController, public modalCtrl: ModalController, public geolocation: Geolocation, public loadingCtrl: LoadingController, public platform: Platform, private zone: NgZone, public http: Http, public navCtrl: NavController, public navParams: NavParams) {
     this.autocomplete = {
       input: ''
     };
@@ -41,30 +44,52 @@ export class SearchresultPage {
       }
     });
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+
     });
     this.loading.present();
   }
 
+  getLocationByPlugIn() {
+    this.map = GoogleMaps.create('test');
+    this.map.getMyLocation().then((location: MyLocation) => {
+      this.getNameFromCordinate(location.latLng);
+    })
+  }
+
+  closeKeyboard() {
+    this.keyboard.close();
+  }
+
   getCurrentPosition() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+
     });
     this.loading.present();
-    this.geolocation.getCurrentPosition().then((resp) => {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 3000,
+      maximumAge: 0
+    };
+    this.geolocation.getCurrentPosition(options).then((resp) => {
       var pos = {
         lat: resp.coords.latitude,
         lng: resp.coords.longitude
       };
       this.getNameFromCordinate(pos);
      }).catch((error) => {
+      this.getLocationByPlugIn();
        console.log('Error getting location', error);
      });
   }
 
   ionViewDidLoad() {
     this.city = this.navParams.get('city')
-    this.autocomplete.input = this.city.description
+    if(this.city.description) {
+      this.autocomplete.input = this.city.description
+    }
+    if(this.city.formatted_address) {
+      this.autocomplete.input = this.city.formatted_address
+    }
     this.geocodePlaceId(this.city);
   }
   
@@ -81,7 +106,7 @@ export class SearchresultPage {
     this.city = item;
     this.autocomplete.input = item.description
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+
     });
     this.loading.present();
     this.geocodePlaceId(item); 
@@ -96,7 +121,8 @@ export class SearchresultPage {
     this.http.post('http://fertilab.azurewebsites.net/api/CentersApi/GetCenterByLocation', position).map(res => res.json()).subscribe(data => {
       this.zone.run(() => {
           data.forEach(element => {
-            element.distance = parseInt(element.distance)
+            var dist = parseFloat(element.distance).toFixed(1);
+            element.distance = dist;
             element.address = element.address + " " + element.city + " " + element.province
             this.centers.push(element);
           });

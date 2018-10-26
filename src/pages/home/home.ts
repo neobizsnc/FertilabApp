@@ -3,6 +3,8 @@ import { NavController, Platform } from 'ionic-angular';
 import { WelcomePage } from '../welcome/welcome';
 import { Http } from '@angular/http';
 import { Keyboard } from '@ionic-native/keyboard';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'page-home',
@@ -12,7 +14,7 @@ export class HomePage {
 
   code: string = "";
 
-  constructor(private keyboard: Keyboard, public platform: Platform, public navCtrl: NavController, public http: Http) {
+  constructor(private storage: Storage, private keyboard: Keyboard, public platform: Platform, public navCtrl: NavController, public http: Http) {
     platform.ready().then((readySource) => { 
       this.keyboard.onKeyboardHide().subscribe(data => {
         //document.getElementById("grid").style.height = this.platform.height() + 30 + "px";
@@ -26,6 +28,9 @@ export class HomePage {
     });
   }
 
+  closeKeyboard() {
+    this.keyboard.close();
+  }
 
 
   
@@ -35,11 +40,12 @@ export class HomePage {
       if(data == true) {
         this.navCtrl.push(WelcomePage);
       }
-    });
+    });*/
     if(this.code == "AMH") {
+      this.storage.set('registered', true);
       this.navCtrl.push(WelcomePage);
-    }*/
-    this.navCtrl.push(WelcomePage);
+    }
+    //this.navCtrl.push(WelcomePage);
   }
 
 }

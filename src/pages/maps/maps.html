@@ -7,10 +7,10 @@
 
 <ion-header>
   <div class="header-pers" [ngClass]="{'ios': operatingSystem == 'ios', 'android': operatingSystem == 'android'}">
-      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="indirizzo, città, cap"></ion-searchbar>
+      <ion-searchbar (keyup.enter)="closeKeyboard()" [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="indirizzo, città, cap"></ion-searchbar>
       <strong class="annulla" (click)="goBack()">Annulla</strong>
       <span class="nearby-text">qui vicino</span>
-      <div class="nearby" (click)="getCurrentPosition()"></div>
+      <div class="nearby" (click)="getCurrentPositionSecond()"></div>
   </div>
   <ion-list [hidden]="autocompleteItems.length == 0">
     <ion-item *ngFor="let item of autocompleteItems[0]" tappable (click)="selectSearchResult(item)">
@@ -22,12 +22,17 @@
 
 
 <ion-content>
+  <div id="test" style="display: none"></div>
   <ion-fab class="close" bottom right edge (click)="close()">
     <button ion-fab><ion-icon name="ios-list-outline"></ion-icon></button>
   </ion-fab>
   <div id="map_canvas" #mapcanvas></div>
   <div [ngClass]="{'active': load, 'deactive': load==false }" id="layer" (click)="goToScheda(selectedCenter)">
-    <h1 *ngIf="load == true">{{ selectedCenter.structure }}</h1>
+    <h1 *ngIf="load == true"><strong>{{ selectedCenter.structure }}</strong></h1>
     <div *ngIf="load == true"class="address">{{ selectedCenter.address }} <br/> {{ selectedCenter.city }} {{ selectedCenter.province }} </div>
+      <div class="distance"  *ngIf="load == true">
+        <div class="icon-loc"></div>
+        <strong>{{ selectedCenter.distance }} km</strong>
+    </div> 
   </div>
 </ion-content>

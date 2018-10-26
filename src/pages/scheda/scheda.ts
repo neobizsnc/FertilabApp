@@ -24,6 +24,7 @@ export class SchedaPage {
 
   constructor(private alertCtrl: AlertController, private socialSharing: SocialSharing, private launchNavigator: LaunchNavigator, public viewCtrl: ViewController, public platform: Platform, private callNumber: CallNumber, private emailComposer: EmailComposer, public smss: SMS, public navCtrl: NavController, public navParams: NavParams) {
     this.structure = this.navParams.get('structure')
+    console.log(this.structure.phone == null);
     platform.ready().then(() => { 
       if(this.platform.is('ios')) {
         this.operatingSystem = "ios";
@@ -42,7 +43,18 @@ export class SchedaPage {
   }
 
   shareEmail() {
-    this.socialSharing.shareViaEmail('Corpo messaggio', 'Oggetto messaggio', ['recipient@example.org']).then(() => {
+
+    var phone = "";
+    if(this.structure.phone)  {
+      phone = ", Tel: " + this.structure.phone;
+    }
+
+    var email = "";
+    if(this.structure.mail)  {
+      email = ", Email: " + this.structure.mail;
+    }
+
+    this.socialSharing.shareViaEmail("Ecco il centro diagnostico più comodo per te: " + this.structure.structure + " ," + this.structure.address + phone + email, 'Ecco il centro diagnostico più comodo per te', ['recipient@example.org']).then(() => {
       // Success!
     }).catch(() => {
       let alert = this.alertCtrl.create({
@@ -55,7 +67,18 @@ export class SchedaPage {
   }
 
   shareSms() {
-    this.socialSharing.shareViaSMS("messaggio di test", null).then(() => {
+
+    var phone = "";
+    if(this.structure.phone)  {
+      phone = ", Tel: " + this.structure.phone;
+    }
+
+    var email = "";
+    if(this.structure.mail)  {
+      email = ", Email: " + this.structure.mail;
+    }
+
+    this.socialSharing.shareViaSMS("Ecco il centro diagnostico più comodo per te: " + this.structure.structure + " ," + this.structure.address + phone + email, null).then(() => {
       // Success!
     }).catch(() => {
       let alert = this.alertCtrl.create({
@@ -69,7 +92,18 @@ export class SchedaPage {
   }
 
   shareWh() {
-    this.socialSharing.shareViaWhatsApp("Messaggio", null, null).then(() => {
+
+    var phone = "";
+    if(this.structure.phone)  {
+      phone = ", Tel: " + this.structure.phone;
+    }
+
+    var email = "";
+    if(this.structure.mail)  {
+      email = ", Email: " + this.structure.mail;
+    }
+
+    this.socialSharing.shareViaWhatsApp("Ecco il centro diagnostico più comodo per te: " + this.structure.structure + " ," + this.structure.address + phone + email, null, null).then(() => {
       // Success!
     }).catch(() => {
       let alert = this.alertCtrl.create({

@@ -5,6 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-content>
+  <div id="test" style="display: none"></div>
   <ion-grid id="gridSearch" fixed>
     <ion-row align-items-center class="logo-ctn"> 
       <ion-col > 
@@ -12,8 +13,10 @@
       </ion-col>
     </ion-row>
     <ion-row align-items-start>
-      <ion-col>
-          <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="indirizzo, città, cap"></ion-searchbar>
+      <ion-col class="searchctn">
+          <ion-searchbar (keyup.enter)="closeKeyboard()" [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="indirizzo, città, cap"></ion-searchbar>
+          <span class="nearby-text">qui vicino</span>
+          <div class="nearby" (click)="getCurrentPosition()"></div>
           <ion-list [hidden]="autocompleteItems.length == 0">
             <ion-item *ngFor="let item of autocompleteItems[0]" tappable (click)="selectSearchResult(item)">
               {{ item.description }}

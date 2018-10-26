@@ -11,18 +11,18 @@
             <ion-icon name="md-pin"></ion-icon>
         </ion-col>
         <ion-col col-11>
-          <div class="address">{{ structure.address }} <br/> {{ structure.city }} {{ structure.province }} </div>
+          <div class="address">{{ structure.address }}</div>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="structure.phone != null">
         <ion-col col-1>
           <ion-icon name="md-call"></ion-icon>
         </ion-col>
-        <ion-col col-11 *ngIf="structure.phone != ''">
+        <ion-col col-11>
           <div class="phone" (click)="call(structure.phone)">{{ structure.phone }}</div>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="structure.mail != null">
         <ion-col col-1>
             <ion-icon name="md-mail"></ion-icon>
         </ion-col>
@@ -30,15 +30,15 @@
           <div class="mail" (click)="email(structure.mail)">{{ structure.mail }}</div>
         </ion-col>
       </ion-row>
-      <ion-row class="border">
+      <ion-row class="border" *ngIf="structure.openTime != null">
         <ion-col>
           <div class="time timeopen"><strong>orario di apertura</strong></div>
           <div class="time">{{ structure.openTime  }}</div>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="structure.openRef != null">
         <ion-col>
-            <div class="time timeopen"><strong>open time referti</strong></div>
+            <div class="time timeopen"><strong>orario ritiro referti</strong></div>
           <div class="time">{{ structure.openRef }}</div>
         </ion-col>
       </ion-row>

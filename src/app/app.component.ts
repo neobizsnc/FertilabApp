@@ -6,6 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { Keyboard } from '@ionic-native/keyboard';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { Storage } from '@ionic/storage';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,13 @@ export class MyApp {
       this.storage.get('introShown').then((result) => {
  
         if(result){
-          this.rootPage = HomePage;
+          storage.get('registered').then((val) => {
+            if(val) {
+              this.rootPage = WelcomePage;
+            } else {
+              this.rootPage = HomePage;
+            }
+          });       
         } else {
           this.rootPage = TutorialPage;
           this.storage.set('introShown', true);
@@ -34,6 +41,7 @@ export class MyApp {
       splashScreen.hide();
 
       this.keyboard.disableScroll(true);
+      this.keyboard.hideKeyboardAccessoryBar(false);
  
     });
   }

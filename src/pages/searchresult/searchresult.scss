@@ -1,4 +1,8 @@
 page-searchresult {
+    .searchbar-clear-icon {
+        right: 3px!important;
+        display: block;
+    }
     .scroll-content {
         padding-bottom: 0 !important;
      }
@@ -20,6 +24,10 @@ page-searchresult {
         }
     }
 
+    .label-md {
+        margin: 20px 8px 20px 0;
+    }
+
     .android {
         ion-searchbar {
             background: transparent!important;
@@ -28,7 +36,7 @@ page-searchresult {
         }
         .annulla {
             position: absolute;
-            bottom: 10px;
+            bottom: 100px;
             right: 25px;
             color: white;
         }    
@@ -126,6 +134,7 @@ page-searchresult {
             color: #8B6DB3;
             font-size: 18px;
             line-height: 24px;
+            font-weight: bold!important;
         }
         
         p {
@@ -155,14 +164,30 @@ page-searchresult {
         bottom: 20px!important;
         right: 30px;
         .fab {
-            
             background: #F18458!important;
         }
         
     }
 
     .fab {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
+    }
+    .fab ion-icon {
+        font-size: 30px;
+    }
+
+    .button-clear-md .button-effect {
+        background-color: #fff!important;
+    }
+    .list-ios>.item-block:first-child {
+        border: none!important;
+    }
+    .searchbar-md .searchbar-input {
+        padding: 6px 25px!important;
+    }
+
+    .ios .searchbar-input {
+        padding: 20px 30px 20px 15px!important;
     }
 }

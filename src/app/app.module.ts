@@ -22,6 +22,9 @@ import { CallNumber } from '@ionic-native/call-number';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { IonicStorageModule } from '@ionic/storage';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 
 @NgModule({
   declarations: [
@@ -73,6 +76,9 @@ import { IonicStorageModule } from '@ionic/storage';
     CallNumber,
     LaunchNavigator,
     SocialSharing,
+    LocationAccuracy,
+    Diagnostic,
+    BackgroundGeolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

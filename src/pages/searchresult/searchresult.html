@@ -1,13 +1,14 @@
 
 <ion-header>
     <div class="header-pers" [ngClass]="{'ios': operatingSystem == 'ios', 'android': operatingSystem == 'android'}">
-        <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="indirizzo, città, cap"></ion-searchbar>
+        <ion-searchbar (keyup.enter)="closeKeyboard()" [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="indirizzo, città, cap"></ion-searchbar>
         <strong class="annulla" (click)="goBack()">Annulla</strong>
         <span class="nearby-text">qui vicino</span>
         <div class="nearby" (click)="getCurrentPosition()"></div>
     </div>
 </ion-header>
 <ion-content  no-padding no-bounce>
+  <div id="test" style="display: none"></div>
   <ion-grid id="gridSearch" fixed>
     <ion-row align-items-start>
         <ion-list [hidden]="autocompleteItems.length == 0">
@@ -21,7 +22,7 @@
           <ion-list class="center-result" [hidden]="centers.length == 0">
             <ion-item *ngFor="let item of centers" tappable (click)="goToScheda(item)">
               <div class="info">
-                  <strong>{{ item.structure | truncate:30 }}</strong>
+                  <strong>{{ item.structure | truncate:25 }}</strong>
                   <p>{{ item.address }}</p>
               </div> 
               <div class="distance">

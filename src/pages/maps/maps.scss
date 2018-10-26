@@ -1,5 +1,8 @@
 page-maps {
-
+    .searchbar-clear-icon {
+        right: 3px!important;
+        display: block;
+    }
     .scroll-content {
         overflow:hidden !important;
     }
@@ -156,8 +159,30 @@ page-maps {
     }
 
     .fab {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
+    }
+    .fab ion-icon {
+        font-size: 30px;
     }
 
+    .distance {
+        position: absolute;
+        top: 35px;
+        right: 45px;
+        
+        .icon-loc {
+            width: 17px;
+            height: 26px;
+            background: url("../../assets/imgs/loc.png") no-repeat;
+            background-size: contain;
+            margin: 0 auto;
+        }
+        strong {
+            font-size: 10px!important;
+        }
+    }
+    .ios .searchbar-input {
+        padding: 20px 30px 20px 15px!important;
+    }
 }
