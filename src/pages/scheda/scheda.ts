@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, ViewController, AlertController } from 'ionic-angular';
-import { SMS } from '@ionic-native/sms';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
@@ -22,7 +21,7 @@ export class SchedaPage {
   structure: any;
   operatingSystem: any;
 
-  constructor(private alertCtrl: AlertController, private socialSharing: SocialSharing, private launchNavigator: LaunchNavigator, public viewCtrl: ViewController, public platform: Platform, private callNumber: CallNumber, private emailComposer: EmailComposer, public smss: SMS, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController, private socialSharing: SocialSharing, private launchNavigator: LaunchNavigator, public viewCtrl: ViewController, public platform: Platform, private callNumber: CallNumber, private emailComposer: EmailComposer, public navCtrl: NavController, public navParams: NavParams) {
     this.structure = this.navParams.get('structure')
     console.log(this.structure.phone == null);
     platform.ready().then(() => { 

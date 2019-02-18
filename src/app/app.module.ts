@@ -16,7 +16,6 @@ import { Keyboard } from '@ionic-native/keyboard';
 import { HttpModule } from '@angular/http';
 import { TruncatePipe } from '../pipes/truncate/truncate';
 import { Geolocation } from '@ionic-native/geolocation';
-import { SMS } from '@ionic-native/sms';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
@@ -71,7 +70,6 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
     Keyboard,
     HttpModule,
     Geolocation,
-    SMS,
     EmailComposer,
     CallNumber,
     LaunchNavigator,

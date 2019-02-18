@@ -110,6 +110,10 @@ export class MapsPage {
       "Latitude" : lat,
       "Longitude" : lng
     }
+    var position1 = {
+      "lat" : lat,
+      "lng" : lng
+    }
     this.http.post('http://fertilab.azurewebsites.net/api/CentersApi/GetCenterByLocation', position).map(res => res.json()).subscribe(data => {
       this.zone.run(() => {
           data.forEach(element => {
@@ -118,23 +122,25 @@ export class MapsPage {
             this.centers.push(element);
           });
 
-          if(this.mark) {
-            this.mark.setIcon( 'assets/imgs/locMaps.png');
-          }
-          
-          this.mark= new google.maps.Marker({
-            position: {lat: parseFloat(this.centers[0].lat), lng: parseFloat(this.centers[0].lng)},
-            map: this.newMap,
-            icon: {  url : 'assets/imgs/GEO_Division_ON.png' },
-            title: 'Hello World!'
-          });
-          this.newMap.panTo(this.mark.getPosition());
-          this.selectedCenter = this.centers[0];
           this.load = true;
-          this.resetMarkers();
+          this.setMarker(position1)
+          // if(this.mark) {
+          //   this.mark.setIcon( 'assets/imgs/locMaps.png');
+          // }
+          
+          // this.mark= new google.maps.Marker({
+          //   position: {lat: parseFloat(this.centers[0].lat), lng: parseFloat(this.centers[0].lng)},
+          //   map: this.newMap,
+          //   icon: {  url : 'assets/imgs/GEO_Division_ON.png' },
+          //   title: 'Hello World!'
+          // });
+          // this.newMap.panTo(this.mark.getPosition());
+          // this.selectedCenter = this.centers[0];
+          // this.load = true;
+          // this.resetMarkers();
 
 
-          this.loading.dismiss();  
+          // this.loading.dismiss();  
       })  
     });
   }
@@ -249,7 +255,7 @@ export class MapsPage {
   
   setMarker(pos) {
 
-    let latLng = new google.maps.LatLng(pos.lat, pos.lng);
+    let latLng = new google.maps.LatLng(this.centers[0].lat, this.centers[0].lng);
     let mapOptions = {
       center: latLng,
       zoom: 18,
@@ -257,7 +263,7 @@ export class MapsPage {
     } 
     this.newMap = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.centers.forEach((val, index) => {
-      let ico = 'assets/imgs/locMaps.png';
+      let ico = 'assets/imgs/GEO_Division_OFF.svg';
       let marker = new google.maps.Marker({
         position: {lat: parseFloat(val.lat), lng: parseFloat(val.lng)},
         map: this.newMap,
@@ -270,28 +276,33 @@ export class MapsPage {
         this.zone.run(() => {
           this.resetMarkers();
           this.load = false;
-          marker.setIcon('assets/imgs/GEO_Division_ON.png');
+          marker.setIcon('assets/imgs/GEO_Division_ON.svg');
           this.selectedCenter = val;
           this.load = true;
           if(this.mark) {
-            this.mark.setIcon( 'assets/imgs/locMaps.png');
+            this.mark.setIcon( 'assets/imgs/GEO_Division_OFF.svg');
           }
         });
       }); 
       this.markers.push(marker);
+      if(index == 0) {
+        this.zone.run(() => {
+          this.newMap.panTo(marker.getPosition());
+        })
+      }
     });
-    this.newMap.panTo(this.markers[0].getPosition());
-    this.markers[0].setIcon('assets/imgs/GEO_Division_ON.png');
+    this.markers[0].setIcon('assets/imgs/GEO_Division_ON.svg');
     this.selectedCenter = this.centers[0];
     this.load = true;
-    this.geocodePlaceId(this.city);
+    //this.geocodePlaceId(this.city);
+    this.loading.dismiss();
 
   }
 
   resetMarkers () {
 
     this.markers.forEach((val, index) => {
-      val.setIcon( 'assets/imgs/locMaps.png');
+      val.setIcon( 'assets/imgs/GEO_Division_OFF.svg');
     })
   }
 

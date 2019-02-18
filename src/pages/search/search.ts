@@ -32,7 +32,10 @@ export class SearchPage {
     this.autocomplete = {
       input: ''
     };
+  }
 
+  ionViewWillEnter () {
+    this.autocomplete.input = '';
   }
 
   getLocationByPlugIn() {
